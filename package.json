@@ -14,6 +14,7 @@
     "@babel/runtime": "^7.13.10",
     "body-parser": "^1.19.0",
     "chalk": "^4.1.0",
+    "cheerio": "^1.0.0-rc.10",
     "config-lite": "^3.0.0",
     "connect-history-api-fallback": "^1.6.0",
     "connect-mongo": "^4.4.1",
@@ -26,7 +27,9 @@
     "mongodb": "^3.6.4",
     "mongoose": "^5.12.2",
     "morgan": "^1.10.0",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "superagent": "^6.1.0",
+    "superagent-charset": "^1.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.14",

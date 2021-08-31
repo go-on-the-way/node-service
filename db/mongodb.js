@@ -5,8 +5,11 @@ import chalk from 'chalk';
 const config = require('config-lite')({})
 const dburl = config.mongodb.url
 
-export function createConnection(){
-    mongoose.connect(dburl, { autoIndex: false });
+export function createConnection(dbname){
+    let databaseName = dbname?dbname:config.mongodb.dbname
+    const url = dburl+databaseName
+    
+    mongoose.connect(url, { autoIndex: false });
     
     const connect = mongoose.connection;
     
@@ -27,7 +30,7 @@ export function createConnection(){
         console.log(
           chalk.red('数据库断开，重新连接数据库')
         );
-        mongoose.connect(dburl, { server:{ auto_reconnect:true } });
+        mongoose.connect(url, { server:{ auto_reconnect:true } });
     });
 
     return connect

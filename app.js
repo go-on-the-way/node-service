@@ -24,12 +24,12 @@ app.all('*', (req, res, next) => {
 	res.header("Access-Control-Allow-Origin", allowOrigin);
 	res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
 	res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-  res.header("Access-Control-Allow-Credentials", true); //可以带cookies
+  	res.header("Access-Control-Allow-Credentials", true); //可以带cookies
 	res.header("X-Powered-By", 'Express');
 	if (req.method == 'OPTIONS') {
-  	res.sendStatus(200);
+  		res.sendStatus(200);
 	} else {
-    next();
+    	next();
 	}
 });
 
@@ -52,8 +52,8 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 installRouter(app)
-// app.use('/', (req, res) => {
-//   // res.send('Hello World!')
+// app.use('/*', (req, res) => {
+//   res.send('Hello World!')
 // });
 
 //托管静态文件
@@ -75,8 +75,10 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+//   res.status(err.status || 500);
+//   res.render('error');
+  res.status(200)
+  res.send('error occur:'+err.status)
 });
 
 module.exports = app;
